@@ -11,6 +11,6 @@ This prototype uses OpenAI's API to create a chatbot specifically targeting ques
     - Flask
  
 
-A deployment of this project can be found [here](https://chatbot-mohawk.onrender.com).
+A deployment of this project can be found [here](https://chatbot-mohawk.onrender.com) (it might take a bit to load).
 
 ### NOTE: this is just a prototype.
