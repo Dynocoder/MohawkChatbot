@@ -16,7 +16,7 @@
             padding: 0;
             display: flex;
             flex-direction: column;
-            height: 100vh;
+            height: 98vh;
             justify-content: flex-end;
         }
 
@@ -44,11 +44,15 @@
         .user-message {
             background-color: #28a745;
             align-self: flex-start;
+            max-width: 50%;
+            margin-right: 0;
         }
 
         .response-message {
             background-color: #007bff;
             align-self: flex-start;
+            max-width: 70%;
+            margin-left: 0;
         }
 
         .input-container {
@@ -57,6 +61,7 @@
             max-width: 80%;
             margin: auto;
             margin-top: 20px;
+            bottom: 0;
         }
 
         .input-field {
@@ -64,7 +69,7 @@
             padding: 10px;
             border: none;
             border-radius: 5px;
-            min-width: 233px;
+            min-width: 20px;
         }
 
         .send-button {
@@ -80,16 +85,15 @@
     <title>Mohawk Assistant</title>
 </head>
 <body>
-    <div class="chat-container" id="chatContainer">
-        <!-- Chat messages will appear here -->
-    </div>
-    <!-- <div class="input-container">
+        
+        <div class="chat-container" id="chatContainer">
+            <!-- Chat messages will appear here -->
 
-    </div> -->
-    <form id="query-form" hx-post="/ask" hx-target="#chatContainer" hx-swap="beforeend" class="input-container input-group">
-        <input name="prompt" type="text" class="input-field" id="userInput" placeholder="Type your message...">
-        <button class="send-button" onclick="sendMessage()" type="submit">Send</button>
-    </form>
+        </div>
+        <form id="query-form" hx-post="/ask" hx-target="#chatContainer" hx-swap="beforeend" class="input-container input-group">
+            <input name="prompt" type="text" class="input-field" id="userInput" placeholder="Try asking about the Mohawk PASS program...">
+            <button class="send-button" onclick="sendMessage()" type="submit">Send</button>
+        </form>
 
     <script>
         function sendMessage() {
@@ -104,21 +108,6 @@
             userMessage.textContent = userInput;
 
             chatContainer.appendChild(userMessage);
-            
-            // response = fetch("./ask")
-            // document.getElementById('userInput').value = '';
-            // Console.log(response);
-            // Console.log(typeof(response));
-
-            // // Here, you can handle the user input and generate a response from the chatbot.
-            // // For simplicity, the response is hardcoded in this example.
-            // var botResponse = 'This is a sample response from the chatbot. asdfasdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff';
-            // var botMessage = document.createElement('div');
-            // botMessage.className = 'message';
-            // botMessage.textContent = botResponse;
-
-            // chatContainer.appendChild(botMessage);
-            // chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to the bottom
         }
     </script>
 </body>

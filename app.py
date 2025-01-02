@@ -9,17 +9,23 @@ app = Flask(__name__)
 load_dotenv()
 
 API_KEY = os.getenv("API_KEY")
-# openai.api_key = "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"
-openai.api_key = API_KEY
+ASSISTANT = os.getenv("ASSISTANT")
 
-# fetch the already made assistant
-mohawk_asst = openai.beta.assistants.retrieve("asst_vqCb0zabVklaiOVYnnmP2HIv")
-# create a thread
-thread = openai.beta.threads.create()
+if ASSISTANT and API_KEY:
+    openai.api_key = API_KEY
+    # fetch the already made assistant
+    mohawk_asst = openai.beta.assistants.retrieve(ASSISTANT)
+
+    # create a thread
+    thread = openai.beta.threads.create()
 
 
 @app.route('/')
 def index():
+
+    if not ASSISTANT or not API_KEY:
+        return render_template("outage.html")
+
     return render_template('index.html')
 
 @app.route('/ask', methods=['POST'])
